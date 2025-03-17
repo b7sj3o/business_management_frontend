@@ -1,0 +1,40 @@
+/* Основний стиль для навігаційної панелі */
+.navbar {
+	@apply bg-[#333] py-6;
+
+	&__list {
+		@apply list-none xl:flex xl:justify-around grid md:grid-cols-4 sm:grid-cols-3;
+
+		@media screen and (max-width: 600px) {
+			@apply flex-col gap-5;
+		}
+	}
+
+	&__item {
+		@apply text-nowrap inline-flex;
+	}
+
+	&__link {
+		@apply no-underline text-white text-[16px] px-1 py-2 rounded-md transition-colors duration-300 ease-in;
+
+		&:hover {
+			@apply bg-[#007bff];
+		}
+
+		&:active {
+			@apply bg-[#0056b3];
+		}
+	}
+
+	&__button {
+		@apply px-4 py-2 bg-green-500 text-white rounded-md transition-colors duration-300 ease-in;
+
+		&:hover {
+			@apply bg-green-600;
+		}
+
+		&:active {
+			@apply bg-green-700 scale-95;
+		}
+	}
+}

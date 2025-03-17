@@ -1,0 +1,8 @@
+export { default as AnalyticsPage } from './AnalyticsPage'
+export { default as CreateProductPage } from './CreateProductPage'
+export { default as HomePage } from './HomePage'
+export { default as ProductArrivalPage } from './ProductArrivalPage'
+export { default as ProductOptPage } from './ProductOptPage'
+export { default as ScannerPage } from './ScannerPage'
+export { default as SettingsPage } from './SettingsPage'
+export { default as VersionsPage } from './VersionsPage'
