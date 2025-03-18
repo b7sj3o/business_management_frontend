@@ -1,0 +1,29 @@
+.base-modal {
+	&__overlay {
+		@apply fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50;
+	}
+
+	&__container {
+		@apply bg-white p-5 rounded-lg shadow-md text-center w-80 relative;
+
+		h2 {
+			@apply text-xl font-semibold mb-4;
+		}
+
+		p {
+			@apply mb-2 text-gray-700;
+		}
+	}
+
+	&__actions {
+		@apply flex flex-col gap-2 mt-4;
+
+		button {
+			@apply w-full bg-green-600 rounded-lg py-2 cursor-pointer text-white text-sm hover:bg-green-700 transition;
+		}
+	}
+
+	&__close-btn {
+		@apply absolute top-2 right-2 text-black text-xl cursor-pointer hover:text-red-500 transition;
+	}
+}

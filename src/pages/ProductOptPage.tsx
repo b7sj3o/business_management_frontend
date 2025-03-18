@@ -1,8 +1,8 @@
-import ProductSearch from '@/components/product/ProductSearch'
+import ProductSearch from '@/components/product/search/ProductSearch'
 import { useModalMessage } from '@/context/ModalMessageContext'
 import { addOpt } from '@/services/api'
 import '@/styles/pages/product-opt/ProductOptPage.scss'
-import { Product } from '@/types/product'
+import { Product } from '@/types/product/product.model'
 import React, { useState } from 'react'
 
 const ProductOptPage: React.FC = () => {

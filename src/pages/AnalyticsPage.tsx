@@ -3,7 +3,7 @@ import { useModalMessage } from '@/context/ModalMessageContext'
 import { deleteSale, getSales, getSalesAnalytics } from '@/services/api'
 import '@/styles/pages/analytics/AnalyticsPage.scss'
 import { SalesAnalytics } from '@/types/analytics'
-import { ProductSale } from '@/types/product'
+import { ProductSale } from '@/types/product/product-sale.model'
 import React, { useEffect, useState } from 'react'
 import {
 	Bar,

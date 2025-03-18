@@ -1,9 +1,9 @@
-import { UPDATES } from '@/components/modal/ModalUpdate'
+import { versionUpdates } from '@/data/updates'
 import '@/styles/pages/versions/VersionsPage.scss'
 import React from 'react'
 
 const VersionsPage: React.FC = () => {
-	const reversed = [...UPDATES].reverse()
+	const reversed = [...versionUpdates].reverse()
 	return (
 		<div className='versions'>
 			<h2 className='versions-title'>🚀 Оновлення</h2>

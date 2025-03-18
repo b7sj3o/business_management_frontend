@@ -1,0 +1,5 @@
+export * from './arrival-editing.model'
+export * from './product-groups.model'
+export * from './product-props.model'
+export * from './product-sale.model'
+export * from './product.model'

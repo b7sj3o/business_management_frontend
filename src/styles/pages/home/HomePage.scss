@@ -1,169 +1,36 @@
-.products-container {
-}
-.title {
-    margin: 20px 0;
-}
-.path-container {
-    display: flex;
-    
-}
-.path {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
+.container {
+	@apply max-w-5xl mx-auto px-4;
 
-    h4 {
-        margin: 0;
-        font-size: 20px;
-        cursor: pointer;
-        transition: all .2s;
+	.products-container {
+		&__title {
+			@apply my-5 text-2xl font-bold;
+		}
 
-        &:hover {
-            color: #576fda;
-        }
-        
-        &:not(:last-child)::after {
-            content: ">";
-            color: #000;
-            text-decoration: none;
-            margin-left: 5px;
-        }
-    }
-}
-.product-btns {
-}
-.back-button {
-    margin: 20px 5px;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+		.product-btns {
+			&__back-button {
+				@apply my-5 mx-1.5 px-5 py-2.5 bg-green-600 text-white rounded text-base cursor-pointer transition-colors hover:bg-green-700;
+			}
+		}
 
-    &:hover {
-        background-color: #45a049;
-    }
+		.buttons-container,
+		.product-item-container {
+			@apply flex flex-wrap justify-center gap-2.5;
+		}
 
-}
+		.button-item {
+			@apply bg-blue-500 text-white p-5 rounded-lg w-full max-w-[180px] text-center cursor-pointer transition-transform transition-colors duration-200 relative hover:bg-blue-600 hover:scale-105;
+		}
 
-
-.buttons-container, .product-item-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-}
-.button-item {
-    background-color: #4a90e2;
-    color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 180px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
-    position: relative;
-
-}
-.product-item {
-    background-color: #4a90e2;
-    color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 180px;
-    position: relative;
-    
-    &-edit {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-        
-        img {
-            transition: all .3s;
-            width: 20px;
-            height: 20px;
-        }
-
-        &:hover {
-            img {
-                transform: scale(1.2);
-            }
-        }
-    }
-
-    &-details {
-        text-align: center;
-    
-        button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-    
-            &:hover {
-                background-color: #45a049;
-            }
-        }
-    }
-
-    &__empty {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: #ddd;
-        color: #000;
-
-        &:hover {
-            background-color: darken($color: #ddd, $amount: 10);
-        }
-
-        button {
-            cursor: not-allowed;
-        }
-    }
-}
-
-.create-product-button {
-    width: 100%;
-    margin: 20px 0;
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-
-    &:hover {
-        background-color: #45a049;
-    }
+		.create-product-button {
+			@apply w-full my-5 px-5 py-2.5 text-lg bg-green-600 text-white rounded cursor-pointer transition-colors hover:bg-green-700;
+		}
+	}
 }
 
 .version {
-    font-size: 16px;
-    font-weight: 600;
-    position: fixed;
-    bottom: 5px;
-    left: 5px;
-    cursor: pointer;
+	@apply text-base font-semibold fixed bottom-1 left-1 cursor-pointer;
 
-    a {
-        color: #000;
-        text-decoration: none;
-    }
+	a {
+		@apply text-black no-underline;
+	}
 }
-
-
-  

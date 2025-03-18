@@ -1,11 +1,6 @@
-import '@/styles/components/product-edit-modal/ProductEditModal.scss'
+import '@/styles/components/product/edit-modal/ProductEditModal.scss'
+import { ProductEditModalProps } from '@/types/product'
 import React from 'react'
-
-interface ProductEditModalProps {
-	title: string
-	onClose: () => void
-	children: React.ReactNode
-}
 
 export const ProductEditModal: React.FC<ProductEditModalProps> = ({
 	title,
@@ -15,7 +10,7 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({
 	let mouseDownInside = false
 
 	const handleMouseDown = (e: React.MouseEvent) => {
-		if ((e.target as HTMLElement).closest('.product-edit')) {
+		if ((e.target as HTMLElement).closest(`.${'product-edit'}`)) {
 			mouseDownInside = true
 		} else {
 			mouseDownInside = false
@@ -25,7 +20,7 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({
 	const handleMouseUp = (e: React.MouseEvent) => {
 		if (
 			!mouseDownInside &&
-			!(e.target as HTMLElement).closest('.product-edit')
+			!(e.target as HTMLElement).closest(`.${'product-edit'}`)
 		) {
 			onClose()
 		}
@@ -33,16 +28,16 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({
 
 	return (
 		<div
-			className='product-edit-container'
+			className={'product-edit__container'}
 			onMouseDown={handleMouseDown}
 			onMouseUp={handleMouseUp}
 		>
-			<div className='product-edit' onClick={e => e.stopPropagation()}>
-				<h3>{title}</h3>
+			<div className={'product-edit'} onClick={e => e.stopPropagation()}>
+				<h3 className={'product-edit__title'}>{title}</h3>
 				<img
 					src='images/close.png'
 					alt='Close'
-					className='product-edit-close'
+					className={'product-edit__close'}
 					onClick={onClose}
 				/>
 				{children}

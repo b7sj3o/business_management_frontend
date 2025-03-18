@@ -1,18 +1,9 @@
+import { navLinks } from '@/data/links'
 import '@/styles/components/navbar/Navbar.scss'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Navbar: React.FC = () => {
-	const navLinks = [
-		{ to: '/', text: 'Головна' },
-		{ to: '/create-product', text: 'Створити моделі' },
-		{ to: '/add-arrival', text: 'Добавити прихід' },
-		{ to: '/add-opt', text: 'Добавити продаж (опт)' },
-		{ to: '/settings', text: 'Налаштування' },
-		{ to: '/analytics', text: 'Аналітика' },
-		{ to: '/scan', text: 'Сканувати', className: 'navbar__button' },
-	]
-
 	return (
 		<nav className='navbar'>
 			<ul className='navbar__list'>

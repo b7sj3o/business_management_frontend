@@ -1,0 +1,16 @@
+.path-container {
+	@apply flex items-center flex-wrap gap-1;
+}
+
+.path {
+	@apply flex flex-wrap gap-1;
+
+	h4 {
+		@apply m-0 text-lg cursor-pointer transition-colors hover:text-indigo-500;
+
+		&:not(:last-child)::after {
+			content: '>';
+			@apply text-black ml-1;
+		}
+	}
+}
