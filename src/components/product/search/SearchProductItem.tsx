@@ -1,15 +1,8 @@
 import '@/styles/components/product/search/SearchProductItem.scss'
-import { Product } from '@/types/product/product.model'
+import { SearchProductItemProps } from '@/types/product'
 import React from 'react'
 
-interface ProductItemProps {
-	product: Product
-	onAddSale?: (productId: number, price: number) => void
-	onProductAdd?: (product: Product) => void
-	showAddSaleButtons?: boolean
-}
-
-const SearchProductItem: React.FC<ProductItemProps> = ({
+const SearchProductItem: React.FC<SearchProductItemProps> = ({
 	product,
 	onAddSale,
 	onProductAdd,

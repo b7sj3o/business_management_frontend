@@ -1,4 +1,4 @@
-import { SalesAnalytics } from '@/types/analytics'
+import { SalesAnalytics } from '@/types/analytics/analytics'
 import { MessageResponse } from '@/types/layout'
 import {
 	ProductForeignKeys,

@@ -1,14 +1,13 @@
 import ModalUpdate from '@/components/modal/ModalUpdate'
 import Breadcrumbs from '@/components/product/Breadcrumbs'
+import ProductCategoriesList from '@/components/product/category/ProductCategoriesList'
 import ProductList from '@/components/product/ProductList'
-import ProductItem from '@/components/product/ProductItem'
 import ProductSearch from '@/components/product/search/ProductSearch'
 import { versionUpdates } from '@/data/updates'
 import { useProducts } from '@/hooks/useProducts'
 import '@/styles/pages/home/HomePage.scss'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ProductCategoriesList from '@/components/product/ProductCategoriesList'
 
 const HomePage: React.FC = () => {
 	const {
@@ -18,7 +17,7 @@ const HomePage: React.FC = () => {
 		handleAddSale,
 		moveToLevel,
 		getCurrentLevel,
-		handleItemClick
+		handleItemClick,
 	} = useProducts()
 
 	return (

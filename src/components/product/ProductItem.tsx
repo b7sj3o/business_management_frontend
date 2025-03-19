@@ -1,12 +1,6 @@
 import '@/styles/components/product/ProductItem.scss'
-import { EditingProductState, ProductInfo } from '@/types/product'
+import { ProductItemProps } from '@/types/product'
 import React from 'react'
-
-interface ProductItemProps {
-	product: ProductInfo
-	setEditingProduct: (product: EditingProductState) => void
-	handleAddSale: (productId: number, amount: number, price: number) => void
-}
 
 const ProductItem: React.FC<ProductItemProps> = ({
 	product,
