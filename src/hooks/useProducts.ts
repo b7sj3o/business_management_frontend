@@ -108,6 +108,8 @@ export const useProducts = () => {
 		return currentLevel
 	}
 
+	const handleItemClick = (key: string) => setPath([...path, key]);
+
 	return {
 		productTree,
 		path,
@@ -120,5 +122,6 @@ export const useProducts = () => {
 		closeEditProduct,
 		moveToLevel,
 		getCurrentLevel,
+		handleItemClick
 	}
 }

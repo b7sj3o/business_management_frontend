@@ -115,13 +115,13 @@ export const addOpt = async (
 
 export const addSale = async (
 	product_id: number,
-	quantity: number,
+	amount: number,
 	price: number
 ): Promise<MessageResponse> => {
 	try {
 		const response = await api.post<MessageResponse>('add-sale/', {
 			product_id,
-			quantity,
+			amount,
 			price,
 		})
 		return response.data

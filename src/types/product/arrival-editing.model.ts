@@ -2,7 +2,7 @@ import { ProductInfo } from './product.model'
 
 export interface ArrivalProducts {
 	id: number
-	quantity: number
+	amount: number
 	price: number
 }
 
