@@ -1,4 +1,4 @@
-import { SalesDynamicsChartProps } from '@/types/analytics/analytics'
+import { SalesDynamicsChartProps } from '@/types/pages/analytics'
 import {
 	CartesianGrid,
 	Line,

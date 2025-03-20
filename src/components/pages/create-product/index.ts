@@ -1,0 +1,6 @@
+export { default as CreateProductForm } from './CreateProductForm'
+export { default as FormSwitcher } from './FormSwitcher'
+export { default as MultipleProductsForm } from './MultipleProductsForm'
+export { default as InputField } from './product-fields/InputField'
+export { default as SelectField } from './product-fields/SelectField'
+export { default as TelField } from './product-fields/TelField'

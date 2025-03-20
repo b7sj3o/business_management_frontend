@@ -1,10 +1,6 @@
 import '@/styles/components/product/Breadcrumbs.scss'
+import { BreadcrumbsProps } from '@/types/product'
 import React from 'react'
-
-interface BreadcrumbsProps {
-	path: string[]
-	moveToLevel: (key: string) => void
-}
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ path, moveToLevel }) => {
 	return (

@@ -1,4 +1,4 @@
-import { TopSalesChartProps } from '@/types/analytics/analytics'
+import { TopSalesChartProps } from '@/types/pages/analytics'
 import { Tooltip } from 'react-bootstrap'
 import {
 	Bar,

@@ -1,5 +1,5 @@
-import { SalesAnalytics } from '@/types/analytics/analytics'
 import { MessageResponse } from '@/types/layout'
+import { SalesAnalytics } from '@/types/pages/analytics'
 import {
 	ProductForeignKeys,
 	ProductForm,

@@ -26,7 +26,6 @@ const HomePage: React.FC = () => {
 			<ModalUpdate />
 			<div className='products-container'>
 				<h2 className='products-container__title'>Товар</h2>
-
 				{path.length > 0 && (
 					<>
 						<Breadcrumbs path={path} moveToLevel={moveToLevel} />
