@@ -1,5 +1,5 @@
 .product-item {
-	@apply bg-blue-500 text-white p-5 rounded-lg w-full max-w-[180px] relative transition-colors;
+	@apply bg-blue-500 text-white p-5 rounded-lg w-full max-w-44 relative transition-colors;
 
 	&__edit {
 		@apply absolute top-2.5 right-2.5 cursor-pointer;

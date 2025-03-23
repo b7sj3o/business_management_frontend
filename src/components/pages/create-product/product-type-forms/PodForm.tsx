@@ -17,7 +17,7 @@ const PodForm: React.FC<ProductTypeFormProps> = ({
 		/>
 		<InputField
 			label='Колір поду'
-			name='color'
+			name='name'
 			value={formData.name}
 			handleChange={handleChange}
 		/>

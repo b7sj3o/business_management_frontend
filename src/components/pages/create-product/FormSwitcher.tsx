@@ -6,7 +6,7 @@ const FormSwitcher: React.FC<FormSwitcherProps> = ({
 }) => (
 	<div className='switcher'>
 		<div
-			className={`switcher-value ${
+			className={`switcher__value ${
 				selectedForm === 'form-one' ? 'active' : ''
 			}`}
 			onClick={e => handleChangeForm(e, 'form-one')}
@@ -14,7 +14,7 @@ const FormSwitcher: React.FC<FormSwitcherProps> = ({
 			Створити один продукт
 		</div>
 		<div
-			className={`switcher-value ${
+			className={`switcher__value ${
 				selectedForm === 'form-many' ? 'active' : ''
 			}`}
 			onClick={e => handleChangeForm(e, 'form-many')}

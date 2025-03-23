@@ -6,7 +6,6 @@ const ProductSearchResults: React.FC<ProductSearchResultsProps> = ({
 	inputQuery,
 	filteredProducts,
 	handleAddSale,
-	onProductAdd,
 	showAddSaleButtons,
 }) => {
 	return (
@@ -25,7 +24,6 @@ const ProductSearchResults: React.FC<ProductSearchResultsProps> = ({
 							onAddSale={(productId, price) =>
 								handleAddSale(productId, 1, price)
 							}
-							onProductAdd={onProductAdd}
 							showAddSaleButtons={showAddSaleButtons}
 						/>
 					))

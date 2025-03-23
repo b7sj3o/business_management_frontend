@@ -1,0 +1,21 @@
+.arrival-selected {
+	&__title {
+		@apply mb-5 pb-3 text-2xl text-center border-b border-gray-300;
+	}
+
+	&__item {
+		@apply flex justify-between mb-4 p-2.5 bg-gray-300 rounded;
+	}
+
+	&__name {
+		@apply font-bold flex items-center;
+	}
+
+	&__remove {
+		@apply px-2.5 py-1.5 bg-red-500 hover:bg-red-600 text-white border-none rounded-md cursor-pointer;
+	}
+
+	&__submit {
+		@apply px-5 py-2.5 bg-green-500 hover:bg-green-600 text-white border-none rounded-md cursor-pointer text-base w-full mt-5;
+	}
+}

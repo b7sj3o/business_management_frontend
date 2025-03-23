@@ -17,7 +17,7 @@ const DisposableForm: React.FC<ProductTypeFormProps> = ({
 		/>
 		<InputField
 			label='Смак одноразки'
-			name='taste'
+			name='name'
 			value={formData.name}
 			handleChange={handleChange}
 		/>

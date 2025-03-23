@@ -60,6 +60,7 @@ const CreateProductPage: React.FC = () => {
 				formData.product_type,
 				productForeignKeys.producers
 			)
+
 			setFilteredProducers(filtered)
 		}
 	}, [formData.product_type, productForeignKeys])

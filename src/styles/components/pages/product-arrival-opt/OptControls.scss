@@ -1,0 +1,15 @@
+.opt-controls {
+	@apply bg-gray-400 p-4 rounded-lg;
+
+	&__item {
+		@apply bg-gray-300 p-2 rounded-md;
+	}
+
+	&__input {
+		@apply px-2 py-1 border border-solid border-gray-300 rounded-md;
+	}
+
+	&__submit {
+		@apply px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white border-none rounded-md cursor-pointer text-base w-1/4 mt-2.5;
+	}
+}

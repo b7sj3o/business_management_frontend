@@ -17,8 +17,8 @@ const CreateProductForm: React.FC<CreateProductFormProps> = ({
 	handleSubmit,
 }) => (
 	<div className='form-container' id='form-one'>
-		<h2>Створити один продукт</h2>
-		<form onSubmit={handleSubmit}>
+		<h2 className='form-container__title'>Створити один продукт</h2>
+		<form className='form-container__form' onSubmit={handleSubmit}>
 			<SelectField
 				label='Тип продукту'
 				name='product_type'
@@ -101,7 +101,7 @@ const CreateProductForm: React.FC<CreateProductFormProps> = ({
 				handleChange={handleChange}
 			/>
 
-			<button type='submit' className='submit-btn'>
+			<button type='submit' className='form-container__submit-btn'>
 				Create Product
 			</button>
 		</form>

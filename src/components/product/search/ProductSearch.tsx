@@ -7,7 +7,6 @@ import ProductSearchHeader from './ProductSearchHeader'
 import ProductSearchResults from './ProductSearchResults'
 
 const ProductSearch: React.FC<ProductSearchProps> = ({
-	onProductAdd,
 	showAddSaleButtons = true,
 }) => {
 	const settings = useSelector((state: any) => state.settings)
@@ -33,7 +32,6 @@ const ProductSearch: React.FC<ProductSearchProps> = ({
 				inputQuery={inputQuery}
 				filteredProducts={filteredProducts}
 				handleAddSale={handleAddSale}
-				onProductAdd={onProductAdd}
 				showAddSaleButtons={showAddSaleButtons}
 			/>
 		</div>

@@ -7,8 +7,8 @@ const MultipleProductsForm: React.FC<MultipleProductsFormProps> = ({
 	handleSubmit,
 }) => (
 	<div className='form-container' id='form-many'>
-		<h2>Створити декілька продуктів</h2>
-		<form onSubmit={handleSubmit}>
+		<h2 className='form-container__title'>Створити декілька продуктів</h2>
+		<form className='form-container__form' onSubmit={handleSubmit}>
 			<TelField
 				label='Закупочна ціна'
 				name='buy_price'
@@ -27,7 +27,7 @@ const MultipleProductsForm: React.FC<MultipleProductsFormProps> = ({
 				value={formData.amount}
 				handleChange={handleChange}
 			/>
-			<button type='submit' className='submit-btn'>
+			<button type='submit' className='form-container__submit-btn'>
 				Create Products
 			</button>
 		</form>

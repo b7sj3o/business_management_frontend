@@ -25,7 +25,6 @@ export interface ProductEditModalProps {
 
 export interface ProductSearchProps {
 	showAddSaleButtons?: boolean
-	onProductAdd?: (product: Product) => void
 }
 
 export interface ProductSearchHeaderProps {
@@ -47,7 +46,6 @@ export interface ProductSearchResultsProps {
 export interface SearchProductItemProps {
 	product: Product
 	onAddSale?: (productId: number, price: number) => void
-	onProductAdd?: (product: Product) => void
 	showAddSaleButtons?: boolean
 }
 
@@ -79,4 +77,9 @@ export interface FormFieldProps {
 	placeholder: string
 	defaultValue?: string | number
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+// Selected Products
+export interface SelectedProduct extends Product {
+	amount: number
 }

@@ -6,7 +6,12 @@ import {
 	updateProduct,
 	updateProducts,
 } from '@/services/api'
-import { EditingProductState, ProductInfo, ProductTree } from '@/types/product'
+import {
+	EditingProductState,
+	Product,
+	ProductInfo,
+	ProductTree,
+} from '@/types/product'
 import { useEffect, useState } from 'react'
 
 export const useProducts = () => {
@@ -108,7 +113,21 @@ export const useProducts = () => {
 		return currentLevel
 	}
 
-	const handleItemClick = (key: string) => setPath([...path, key]);
+	const getProductName = (product: Product) => {
+		const type = product.product_type_name.toLowerCase()
+
+		if (type === 'под') {
+			return `${product.producer_name} ${product.pod_model_name} - ${product.name}`
+		}
+
+		if (type === 'картридж') {
+			return `${product.producer_name} ${product.cartridge_model_name} - ${product.resistance_amount}`
+		}
+
+		return `${product.producer_name} - ${product.name}`
+	}
+
+	const handleItemClick = (key: string) => setPath([...path, key])
 
 	return {
 		productTree,
@@ -122,6 +141,7 @@ export const useProducts = () => {
 		closeEditProduct,
 		moveToLevel,
 		getCurrentLevel,
-		handleItemClick
+		handleItemClick,
+		getProductName,
 	}
 }

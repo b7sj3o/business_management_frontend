@@ -36,6 +36,7 @@ export const getProducts = async (): Promise<Product[]> => {
 // Get all not required fields that exist in product, so we can do select-option in the most effective way
 export const getProductForeignKeys = async (): Promise<ProductForeignKeys> => {
 	const response = await api.get<ProductForeignKeys>('product-foreign-keys/')
+
 	return response.data
 }
 
@@ -89,10 +90,11 @@ export const createProduct = async (
 
 // add arrival
 export const addArrival = async (
-	products: ArrivalProducts[]
+	products: ArrivalProducts[],
+	buy_price: number
 ): Promise<{ success: boolean; data: string }> => {
 	try {
-		const response = await api.post('add-arrival/', { products })
+		const response = await api.post('add-arrival/', { products, buy_price })
 		return { success: true, data: response.data }
 	} catch (error: any) {
 		const message = error.response?.data?.message || 'An error occurred.'

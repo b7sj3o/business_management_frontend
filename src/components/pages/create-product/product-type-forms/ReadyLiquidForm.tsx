@@ -24,7 +24,7 @@ const ReadyLiquidForm: React.FC<ProductTypeFormProps> = ({
 		/>
 		<InputField
 			label='Смак рідини'
-			name='taste'
+			name='name'
 			value={formData.name}
 			handleChange={handleChange}
 		/>
