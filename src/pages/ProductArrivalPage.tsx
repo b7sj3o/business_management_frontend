@@ -1,28 +1,64 @@
 import NumberField from '@/components/pages/product-arrival-opt/NumberField'
 import ProductSearch from '@/components/product/search/ProductSearch'
-import { useArrivalActions } from '@/hooks/arrival/useArrivalActions'
+import { useModalMessage } from '@/context/ModalMessageContext'
+// import { useArrivalActions } from '@/hooks/arrival/useArrivalActions'
 import { useProductSelection } from '@/hooks/arrival/useProductSelection'
 import { addArrival } from '@/services/api'
 import '@/styles/pages/product-arrival-opt/ProductArrival.scss'
+import { Product, SelectedProduct } from '@/types/product'
+import { useState } from 'react'
 
 const ProductArrivalPage: React.FC = () => {
-	const { price, setPrice, selectedProducts } = useProductSelection()
-	const { submitArrival } = useArrivalActions()
+	const { showModal } = useModalMessage()
+	const [ selectedProducts, setSelectedProducts ] = useState<SelectedProduct[]>([]);
+	const [price, setPrice] = useState(0)
+	
 
-	const handleSubmitArrival = () => {
-		submitArrival({
-			apiFunction: addArrival,
-			successMessage: 'Прихід успішно додано!',
-			errorMessage: 'Помилка при додаванні приходу товарів.',
-			clearArrival: true,
-		})
+	const handleSubmitArrival = async () => {
+			const productsToSend = selectedProducts.map(({ product, amount }) => ({
+				id: product.id,
+				amount,
+			}))
+	
+			try {
+				const response = await addArrival(productsToSend, price)
+				if (response.success) {
+					showModal('Прихід успішно додано!')
+					setSelectedProducts([])
+				} else {
+					showModal('Помилка при додаванні приходу!')
+				}
+			} catch (error) {
+				console.error('Error submitting arrival:', error)
+			}
 	}
+
+	const getProductAmount = (productId: number) => {
+			const product = selectedProducts.find(p => p.product.id === productId)
+			return product ? product.amount : 0
+		}
+	
+	const handleChangeProductAmount = (product: Product, amount: number) => {
+		setSelectedProducts((prev) => {
+			const existingProduct = prev.find((p) => p.product.id === product.id);
+			if (existingProduct) {
+				return prev.map((p) =>
+					p.product.id === product.id ? { ...p, amount: Math.max(1, p.amount + amount) } : p
+				);
+			} else {
+				return [...prev, { product, amount }];
+			}
+		});
+	};
 
 	return (
 		<>
 			<div className='product-arrival'>
 				<h1 className='product-arrival__title'>Додавання приходу товарів</h1>
-				<ProductSearch showAddSaleButtons={false} />
+				<ProductSearch
+					showAddSaleButtons={false}
+					getProductAmount={getProductAmount}
+					handleChangeProductAmount={handleChangeProductAmount} />
 				<div className='arrival-selected'>
 					<NumberField
 						label='Закупна ціна'
@@ -41,6 +77,7 @@ const ProductArrivalPage: React.FC = () => {
 						Додати
 					</button>
 				)}
+				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 			</div>
 		</>
 	)

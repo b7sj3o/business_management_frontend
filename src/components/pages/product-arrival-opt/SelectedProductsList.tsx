@@ -31,13 +31,13 @@ const SelectedProductsList: React.FC<SelectedProductsListProps> = ({
 				<>
 					<ul className='arrival-selected__list'>
 						{selectedProducts.map(p => (
-							<li key={p.id} className='arrival-selected__item'>
+							<li key={p.product.id} className='arrival-selected__item'>
 								<h3 className='arrival-selected__name'>
-									{p.producer_name} - <span>{p.name}</span>
+									{p.product.producer_name} - <span>{p.product.name}</span>
 								</h3>
 								<button
 									className='arrival-selected__remove'
-									onClick={() => onRemoveProduct(p.id)}
+									onClick={() => onRemoveProduct(p.product.id)}
 								>
 									Видалити
 								</button>

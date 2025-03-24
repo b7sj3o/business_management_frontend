@@ -24,7 +24,7 @@ const NumberField: React.FC<NumberFieldProps> = ({
 				type='number'
 				min={min}
 				step={step}
-				value={value}
+				value={value || ""}
 				onChange={e => {
 					const val = parseFloat(e.target.value)
 					if (handleOptChange && productId !== undefined) {

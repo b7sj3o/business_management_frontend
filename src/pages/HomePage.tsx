@@ -1,7 +1,9 @@
 import ModalUpdate from '@/components/modal/ModalUpdate'
 import Breadcrumbs from '@/components/product/Breadcrumbs'
 import ProductCategoriesList from '@/components/product/category/ProductCategoriesList'
+import { ProductEditModal } from '@/components/product/ProductEditModal'
 import ProductList from '@/components/product/ProductList'
+import { ProductInfo } from '@/types/product'
 import ProductSearch from '@/components/product/search/ProductSearch'
 import { versionUpdates } from '@/data/updates'
 import { useProducts } from '@/hooks/useProducts'
@@ -13,12 +15,57 @@ const HomePage: React.FC = () => {
 	const {
 		path,
 		setPath,
+		editingProduct,
 		setEditingProduct,
 		handleAddSale,
 		moveToLevel,
 		getCurrentLevel,
 		handleItemClick,
 	} = useProducts()
+
+	const renderEditingProduct = () => {
+	// 	if (editingProduct && editingProduct.type === 'sale') {
+	// 		return (
+	// 			<ProductEditModal
+	// 				title='Редагувати товар'
+	// 				onClose={() => setEditingProduct({})}
+	// 			>
+	// 				<form onSubmit={(e) => {e.preventDefault(); handleAddSale(editingProduct.product.id, editingProduct.product.amount, editingProduct.sell_price); closeEditProduct();}}>
+	// 					<div className='form-group'>
+	// 						<label htmlFor='amount'>Кількість</label>
+	// 						<input
+	// 							type='text'
+	// 							name='amount'
+	// 							placeholder='Кількість'
+	// 							defaultValue={1}
+	// 							onChange={handleEditProductChange}
+	// 						/>
+	// 					</div>
+	// 					<div className='form-group'>
+	// 						<label htmlFor='sell_price'>Ціна продажу</label>
+	// 						<input
+	// 							type='text'
+	// 							name='sell_price'
+	// 							placeholder='Ціна продажу'
+	// 							defaultValue={editingProduct.product.sell_price}
+	// 							onChange={handleEditProductChange}
+	// 						/>
+	// 					</div>
+	// 					<button type='submit' className='product-edit-submit'>
+	// 						Добавити продажу
+	// 					</button>
+	// 				</form>
+	// 			</ProductEditModal>
+	// 		)
+	// 	}
+	// 	if (editingProduct && editingProduct.type === 'edit') {
+		return (
+			<></>
+		)
+	}
+	
+
+
 
 	return (
 		<div className='container'>
@@ -68,6 +115,9 @@ const HomePage: React.FC = () => {
 					v.{versionUpdates[versionUpdates.length - 1].version}
 				</Link>
 			</small>
+			
+			{/* TODO тут може ти робив якусь заготовку для форми, якщо є, то заміни */}
+			{editingProduct && renderEditingProduct()}
 		</div>
 	)
 }

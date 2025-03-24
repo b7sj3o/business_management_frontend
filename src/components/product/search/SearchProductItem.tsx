@@ -8,9 +8,10 @@ const SearchProductItem: React.FC<SearchProductItemProps> = ({
 	product,
 	onAddSale,
 	showAddSaleButtons = true,
+	getProductAmount=null,
+	handleChangeProductAmount=null
 }) => {
 	const { getProductName } = useProducts()
-	const { getProductAmount, handleChangeProductAmount } = useProductSelection()
 
 	return (
 		<li className='search-item'>

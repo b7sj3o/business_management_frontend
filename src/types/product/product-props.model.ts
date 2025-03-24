@@ -25,6 +25,8 @@ export interface ProductEditModalProps {
 
 export interface ProductSearchProps {
 	showAddSaleButtons?: boolean
+	getProductAmount?: (productId: number) => number | null,
+	handleChangeProductAmount?: (product: Product, amount: number) => void,
 }
 
 export interface ProductSearchHeaderProps {
@@ -41,12 +43,16 @@ export interface ProductSearchResultsProps {
 	handleAddSale: (productId: number, amount: number, price: number) => void
 	onProductAdd?: (product: Product) => void
 	showAddSaleButtons: boolean
+	getProductAmount?: (productId: number) => number | null,
+	handleChangeProductAmount?: (product: Product, amount: number) => void,
 }
 
 export interface SearchProductItemProps {
 	product: Product
 	onAddSale?: (productId: number, price: number) => void
 	showAddSaleButtons?: boolean
+	getProductAmount?: (productId: number) => number | null,
+	handleChangeProductAmount?: (product: Product, amount: number) => void,
 }
 
 // Categories
@@ -80,6 +86,12 @@ export interface FormFieldProps {
 }
 
 // Selected Products
-export interface SelectedProduct extends Product {
+export interface SelectedProduct {
+	product: Product
 	amount: number
+}
+
+export interface SelectedArrivalProducts {
+	products: SelectedProduct[]
+	price: number
 }

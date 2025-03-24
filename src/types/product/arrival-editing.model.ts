@@ -3,7 +3,6 @@ import { ProductInfo } from './product.model'
 export interface ArrivalProducts {
 	id: number
 	amount: number
-	price: number
 }
 
 export interface OptProducts extends ArrivalProducts {}

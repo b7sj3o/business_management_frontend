@@ -18,7 +18,7 @@ export const useScrollToTopButton = () => {
 			const button = document.querySelector('.move-to-top') as HTMLElement
 			if (button) {
 				const rect = button.getBoundingClientRect()
-				setButtonPos([rect.x, rect.y])
+				setButtonPos([x, y])
 				if (
 					x >= rect.left &&
 					x <= rect.right &&

@@ -7,8 +7,8 @@ export const groupSalesByDate = (sales: ProductSale[]) => {
 			acc[date] = { sales: [], totalEarnings: 0, totalRevenue: 0 }
 		}
 		acc[date].sales.push(sale)
-		acc[date].totalEarnings += sale.sell_price - sale.buy_price
-		acc[date].totalRevenue += sale.sell_price
+		acc[date].totalEarnings += (sale.sell_price - sale.buy_price) * sale.amount
+		acc[date].totalRevenue += sale.sell_price * sale.amount
 		return acc
 	}, {} as Record<string, { sales: ProductSale[]; totalEarnings: number; totalRevenue: number }>)
 }

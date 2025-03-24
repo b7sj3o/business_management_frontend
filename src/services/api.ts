@@ -104,10 +104,11 @@ export const addArrival = async (
 
 // add opt
 export const addOpt = async (
-	products: OptProducts[]
+	products: OptProducts[],
+	sell_price: number
 ): Promise<{ success: boolean; data: string }> => {
 	try {
-		const response = await api.post('add-opt/', { products })
+		const response = await api.post('add-opt/', { products, sell_price })
 		return { success: true, data: response.data }
 	} catch (error: any) {
 		const message = error.response?.data?.message || 'An error occurred.'

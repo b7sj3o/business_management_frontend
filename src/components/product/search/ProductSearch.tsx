@@ -8,6 +8,8 @@ import ProductSearchResults from './ProductSearchResults'
 
 const ProductSearch: React.FC<ProductSearchProps> = ({
 	showAddSaleButtons = true,
+	getProductAmount = null,
+	handleChangeProductAmount = null,
 }) => {
 	const settings = useSelector((state: any) => state.settings)
 	const {
@@ -33,6 +35,8 @@ const ProductSearch: React.FC<ProductSearchProps> = ({
 				filteredProducts={filteredProducts}
 				handleAddSale={handleAddSale}
 				showAddSaleButtons={showAddSaleButtons}
+				getProductAmount={getProductAmount || (() => null)}
+				handleChangeProductAmount={handleChangeProductAmount || (() => null)}
 			/>
 		</div>
 	)

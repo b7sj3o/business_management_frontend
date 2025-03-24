@@ -17,8 +17,8 @@ const SaleDetailsModal: React.FC<SaleDetailsModalProps> = ({
 				<p>Виробник: {sale.producer_name}</p>
 				<p>Тип продукту: {sale.product_type}</p>
 				<p>Кількість проданого: {sale.amount}</p>
-				<p>Ціна продажу: {sale.sell_price} грн</p>
-				<p>Заробіток: {sale.sell_price - sale.buy_price} грн</p>
+				<p>Ціна продажу: {sale.sell_price} грн {sale.amount > 1 ? `(${sale.sell_price * sale.amount}грн)` : ""}</p>
+				<p>Заробіток: {sale.sell_price - sale.buy_price} грн {sale.amount > 1 ? `(${(sale.sell_price - sale.buy_price) * sale.amount}грн)` : ""}</p>
 				<p>
 					Дата: {new Date(sale.date).toLocaleDateString('uk-UA')},{' '}
 					{new Date(sale.date).toLocaleTimeString('uk-UA', {

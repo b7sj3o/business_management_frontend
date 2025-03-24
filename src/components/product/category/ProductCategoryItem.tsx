@@ -15,15 +15,20 @@ const ProductCategoryItem: React.FC<ProductCategoryProps> = ({
 			onClick={() => handleItemClick(category)}
 		>
 			<h3>{category}</h3>
-			<div
-				className='product-item__edit'
-				onClick={e => {
-					e.stopPropagation()
-					setEditingProduct({ product: products, type: 'row' })
-				}}
-			>
-				<img src='images/dots.png' alt='' />
-			</div>
+
+			{Array.isArray(products) && (
+				<div
+					className='product-item__edit'
+					onClick={e => {
+						e.stopPropagation()
+						setEditingProduct({ product: products, type: 'row' })
+					}}
+				>
+					<img src='images/dots.png' alt='' />
+				</div>
+			)}
+
+			
 		</div>
 	)
 }
