@@ -1,0 +1,28 @@
+.product-edit__container {
+	@apply fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50;
+}
+
+.product-edit {
+	@apply bg-blue-500 rounded-lg p-5 w-[500px] max-w-[90%] text-white relative;
+
+	@media (max-width: 580px) {
+		@apply w-[90%] p-3;
+	}
+
+	&__title {
+		@apply text-center text-2xl mb-4 text-white;
+	}
+
+	&__close {
+		@apply absolute top-2.5 right-2.5 w-4 h-4 cursor-pointer;
+	}
+
+	// !!! I haven't seen the usage of these last two classes in project. Maybe it isn't necessary.
+	&__submit {
+		@apply mt-5 px-5 py-2.5 bg-green-600 text-white rounded text-lg hover:bg-green-700 transition-colors;
+	}
+
+	&__delete {
+		@apply mt-5 px-5 py-2.5 bg-red-600 text-white rounded text-lg float-right hover:bg-red-700 transition-colors;
+	}
+}

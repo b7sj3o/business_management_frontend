@@ -1,225 +1,81 @@
-import ProductSearch from '@/components/product/ProductSearch'
+import NumberField from '@/components/pages/product-arrival-opt/NumberField'
+import ProductSearch from '@/components/product/search/ProductSearch'
 import { useModalMessage } from '@/context/ModalMessageContext'
-import { addOpt } from '@/services/api'
-import '@/styles/pages/product-opt/ProductOptPage.scss'
-import { Product } from '@/types/product'
-import React, { useState } from 'react'
+// import { useArrivalActions } from '@/hooks/arrival/useArrivalActions'
+import { useProductSelection } from '@/hooks/arrival/useProductSelection'
+import { addArrival, addOpt } from '@/services/api'
+import '@/styles/pages/product-arrival-opt/ProductArrival.scss'
+import { Product, SelectedProduct } from '@/types/product'
+import { useState } from 'react'
 
 const ProductOptPage: React.FC = () => {
-	const [selectedProducts, setSelectedProducts] = useState<Product[]>([])
-	const [quantity, setQuantity] = useState<number>(1)
-	const [price, setPrice] = useState<number>(0)
-	const [arrivalProducts, setArrivalProducts] = useState<
-		Array<{ product: Product; quantity: number; price: number }>
-	>([])
-	const [totalQuantity, setTotalQuantity] = useState<number>(0)
 	const { showModal } = useModalMessage()
+	const [ selectedProducts, setSelectedProducts ] = useState<SelectedProduct[]>([]);
+	const [price, setPrice] = useState(0)
+	
 
-	const handleAddProduct = (product: Product) => {
-		if (!selectedProducts.find(p => p.id === product.id)) {
-			setSelectedProducts(prev => [...prev, product])
-		}
-	}
-
-	const handleUpdateQuantity = (q: string) => {
-		setQuantity(parseInt(q))
-	}
-
-	const handleUpdatePrice = (p: string) => {
-		setPrice(parseInt(p))
-	}
-
-	const handleRemoveProduct = (id: number) => {
-		setSelectedProducts(prev => prev.filter(item => item.id !== id))
-	}
-
-	const handleSubmitSelectedProducts = () => {
-		const newProducts = selectedProducts.filter(
-			product =>
-				!arrivalProducts.some(
-					arrProduct => arrProduct.product.id === product.id
-				)
-		)
-
-		if (newProducts.length) {
-			const newArrivalProducts = newProducts.map(product => ({
-				product,
-				quantity,
+	const handleSubmitOpt = async () => {
+			const productsToSend = selectedProducts.map(({ product, amount }) => ({
+				id: product.id,
+				amount,
 				price,
 			}))
-
-			const updatedArrival = [...arrivalProducts, ...newArrivalProducts]
-
-			setArrivalProducts(updatedArrival)
-
-			setSelectedProducts([])
-
-			const suma = updatedArrival.reduce(
-				(sum, product) => sum + product.quantity,
-				0
-			)
-			setTotalQuantity(suma || totalQuantity)
-		} else {
-			showModal('Такий товар вже є в таблиці!')
-		}
-	}
-
-	const handleSubmitArrival = async () => {
-		const productsToSend = arrivalProducts.map(
-			({ product, quantity, price }) => ({
-				id: product.id,
-				quantity,
-				price,
-			})
-		)
-
-		try {
-			const response = await addOpt(productsToSend)
-
-			if (response.success) {
-				alert('Arrival successfully added!')
-				setSelectedProducts([])
-			} else {
-				alert('Error adding arrival.')
+	
+			try {
+				const response = await addOpt(productsToSend, price)
+				if (response.success) {
+					showModal('Оптову продажу успішно здійснено!')
+					setSelectedProducts([])
+				} else {
+					showModal('Помилка при здійснені оптової продажі!')
+				}
+			} catch (error) {
+				console.error('Error submitting opt sale:', error)
 			}
-		} catch (error) {
-			console.error('Error submitting arrival:', error)
-		}
 	}
 
-	const handleProductDataChange = (
-		e: React.ChangeEvent<HTMLInputElement>,
-		id: number,
-		key: string,
-		value: string
-	) => {
-		if (e.target.value[0] === '0') {
-			e.target.value = e.target.value.slice(1)
+	const getProductAmount = (productId: number) => {
+			const product = selectedProducts.find(p => p.product.id === productId)
+			return product ? product.amount : 0
 		}
-		const updatedArrival = arrivalProducts.map(arrProduct =>
-			arrProduct.product.id === id
-				? { ...arrProduct, [key]: parseInt(value) }
-				: arrProduct
-		)
-		setArrivalProducts(updatedArrival)
-
-		const suma = updatedArrival.reduce(
-			(sum, product) => sum + product.quantity,
-			0
-		)
-		setTotalQuantity(suma || totalQuantity)
-	}
+	
+	const handleChangeProductAmount = (product: Product, amount: number) => {
+		setSelectedProducts((prev) => {
+			const existingProduct = prev.find((p) => p.product.id === product.id);
+			if (existingProduct) {
+				return prev.map((p) =>
+					p.product.id === product.id ? { ...p, amount: Math.max(1, p.amount + amount) } : p
+				);
+			} else {
+				return [...prev, { product, amount }];
+			}
+		});
+	};
 
 	return (
 		<>
-			<h1 className='product-arrival-title'>Додавання опту товарів</h1>
 			<div className='product-arrival'>
+				<h1 className='product-arrival__title'>Додавання опту</h1>
 				<ProductSearch
 					showAddSaleButtons={false}
-					onProductAdd={handleAddProduct}
-				/>
-				<br />
-				<div className='product-arrival__selected'>
-					<h2>Вибрані товари</h2>
-					{selectedProducts.length > 0 &&
-						selectedProducts.map(product => (
-							<div key={product.id} className='product-arrival__selected__item'>
-								<h3>
-									{product.producer_name} - <span>{product.name}</span>
-								</h3>
-								<div className='product-arrival__selected__details'>
-									<button onClick={() => handleRemoveProduct(product.id)}>
-										Видалити
-									</button>
-								</div>
-							</div>
-						))}
-					<label>
-						Кількість:
-						<input
-							type='number'
-							min='1'
-							step='1'
-							value={quantity}
-							onChange={e => handleUpdateQuantity(e.target.value)}
-						/>
-					</label>
-					<label>
-						Продажна ціна:
-						<input
-							type='number'
-							min='0'
-							step='1'
-							value={price}
-							onChange={e => handleUpdatePrice(e.target.value)}
-						/>
-					</label>
-					{selectedProducts.length > 0 && (
-						<button
-							className='product-arrival__selected__submit'
-							onClick={handleSubmitSelectedProducts}
-						>
-							Добавити
-						</button>
-					)}
+					getProductAmount={getProductAmount}
+					handleChangeProductAmount={handleChangeProductAmount} />
+				<div className='arrival-selected'>
+					<NumberField
+						label='Продажна ціна'
+						min={0}
+						step={10}
+						value={price}
+						handleChange={setPrice}
+					/>
 				</div>
-			</div>
-			<div className='product-arrival__arrival'>
-				<h2>Опт товарів</h2>
-				<table className='product-arrival__table'>
-					<thead>
-						<tr>
-							<th>Назва товару</th>
-							<th>
-								Кількість |<span className='red'> {totalQuantity}</span>
-							</th>
-							<th>Продажна ціна</th>
-						</tr>
-					</thead>
-					<tbody>
-						{arrivalProducts.map(({ product, quantity, price }) => (
-							<tr key={product.id} className='product-arrival__item'>
-								<td>
-									{product.producer_name} - {product.name}
-								</td>
-								<td>
-									<input
-										type='number'
-										value={quantity}
-										onChange={e =>
-											handleProductDataChange(
-												e,
-												product.id,
-												'quantity',
-												e.target.value
-											)
-										}
-									/>
-								</td>
-								<td>
-									<input
-										type='number'
-										value={price}
-										onChange={e =>
-											handleProductDataChange(
-												e,
-												product.id,
-												'price',
-												e.target.value
-											)
-										}
-									/>
-								</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
-				{arrivalProducts.length > 0 && (
+
+				{(selectedProducts.length > 0 && price > 0) && (
 					<button
-						className='product-arrival__submit'
-						onClick={handleSubmitArrival}
+						className='product-arrival__submit-btn'
+						onClick={handleSubmitOpt}
 					>
-						Додати опт
+						Додати
 					</button>
 				)}
 			</div>

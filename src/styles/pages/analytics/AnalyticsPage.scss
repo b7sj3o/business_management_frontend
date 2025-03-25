@@ -1,170 +1,75 @@
-// src/components/SalesAnalytics/SalesAnalytics.scss
-
 .sales-analytics-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+	@apply max-w-screen-xl mx-auto px-5;
 }
 
 h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2rem;
-    color: #333;
+	@apply mb-7 text-3xl text-center text-gray-700;
 }
 
 .sales-list {
-    display: flex;
-    flex-direction: column;
-    row-gap: 15px;
+	@apply flex flex-col gap-y-4;
 
-    &-date {
-        text-align: center;
-        font-size: 25px;
-        margin: 10px 0;
-    }
+	&-date {
+		@apply text-center text-2xl my-2.5;
+	}
 }
 
 .sale-item {
-    display: flex;
-    justify-content: space-between;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+	@apply flex justify-between bg-lightGray p-5 rounded-lg shadow-md transition-all duration-300 ease-in-out hover:bg-[#ffffff99];
 
-    &-delete {
-        cursor: pointer;
-        color: #fff;
-        background-color: #ff4d4d;
-        border: none;
-        border-radius: 12px;
-        font-size: 1rem;
-        padding: 8px 16px;
-        transition: background-color 0.3s ease, transform 0.3s ease;
+	&-delete {
+		@apply cursor-pointer text-white bg-red-500 border-none rounded-xl text-base py-2 px-4 transition duration-300 ease-in-out hover:bg-red-600 hover:scale-105 active:bg-red-700 active:scale-95;
+	}
 
-        &:hover {
-            background-color: #ff1a1a;
-            transform: scale(1.05);
-        }
+	h4 {
+		@apply text-xl text-gray-700 mb-2.5;
+	}
 
-        &:active {
-            background-color: #e60000;
-            transform: scale(0.95);
-        }
-    }
+	p {
+		@apply text-base text-gray-600 mb-2;
+	}
 
-    &:hover {
-        background-color: #ffffff99;
-    }
+	p:last-child {
+		@apply mb-0;
+	}
 
-    h4 {
-        font-size: 1.2rem;
-        color: #333;
-        margin-bottom: 10px;
-    }
-
-    p {
-        font-size: 1rem;
-        color: #555;
-        margin-bottom: 8px;
-    }
-
-    p:last-child {
-        margin-bottom: 0;
-    }
-
-    .date {
-        color: #777;
-        font-size: 0.875rem;
-    }
+	.date {
+		@apply text-gray-500 text-sm;
+	}
 }
 
 .show-all-button {
-    display: block;
-    padding: 10px 20px;
-    margin: 10px 0;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    &:hover {
-        background-color: #0056b3;
-    }
+	@apply block;
 }
 
 .sale-details {
-    margin-top: 20px;
-    color: #fff;
+	@apply mt-5 text-white;
 
-    p {
-        font-size: 1rem;
-        margin-bottom: 10px;
-    }
+	p {
+		@apply text-base mb-2.5;
+	}
 
-    p:last-child {
-        margin-bottom: 0;
-    }
-}
-
-@keyframes fadeOout {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+	p:last-child {
+		@apply mb-0;
+	}
 }
 
 .analytics-summary {
-    padding: 30px;
-    color: #fff;
-    text-align: center;
-    transition: transform 0.3s ease;
+	@apply p-7 text-white text-center transition duration-300 ease-in-out;
 
-    &-title {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-    }
+	&-title {
+		@apply text-4xl mb-5;
+	}
 
-    &-item {
-        font-size: 1.2rem;
-        margin: 10px 0;
-        padding: 10px;
-        background-color: #3a3f47;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-
-        &:hover {
-            background-color: #50575e;
-        }
-    }
+	&-item {
+		@apply text-xl my-2.5 p-2.5 bg-gray-700 hover:bg-gray-600 rounded-s-md transition duration-300 ease-in-out;
+	}
 }
 
 .periods {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
+	@apply flex justify-center my-5;
+}
 
-    .period {
-        padding: 10px 20px;
-        margin: 0 10px;
-        font-size: 1rem;
-        color: #fff;
-        background-color: #007bff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-
-        &:hover {
-            background-color: #0056b3;
-        }
-
-    }
+:is(.show-all-button, .period) {
+	@apply py-2.5 px-5 my-2.5 text-base text-white bg-sky-600 hover:bg-sky-700 border-none rounded-ss cursor-pointer transition duration-300 ease-in-out;
 }

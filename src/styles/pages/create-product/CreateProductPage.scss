@@ -1,146 +1,31 @@
 .form-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+	@apply max-w-2xl mx-auto p-4 bg-white rounded-lg shadow-md;
 
-h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-}
+	label {
+		@apply block font-bold mb-2 text-gray-700;
+	}
 
-.form-group {
-    margin-bottom: 15px;
-}
+	:is(input, select) {
+		@apply w-full px-2 py-1 border border-gray-300 rounded-md;
+	}
 
-label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 8px;
-    color: #444;
-}
+	select {
+		@apply appearance-none;
+	}
 
-input, select {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+	&__title {
+		@apply text-center text-2xl font-bold mb-5;
+	}
 
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
-button.submit-btn {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-
-    &:hover {
-        background-color: #0056b3;
-    }
-}
-
-input[type="number"] {
-    -moz-appearance: textfield;
-
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
+	&__submit-btn {
+		@apply w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600;
+	}
 }
 
 .switcher {
-    display: flex;
-    justify-content: center;
-    column-gap: 50px;
-    margin: 40px auto;
-    background-color: #3a8ae0;
-    border-radius: 10px;
-    width: fit-content;
-    padding: 20px 20px 30px 20px;
-}
+	@apply flex justify-center gap-10 p-4 rounded-lg;
 
-.switcher-value {
-    font-size: 24px;
-    color: #fff;
-    position: relative;
-    cursor: pointer;
-    transition: all .3s;
-
-    &:hover {
-        &::after {
-            content: '';
-            position: absolute;
-            display: block;
-            margin-top: 10px;
-            width: 100%;
-            height: 5px;
-            background-color: #fff;
-            border-radius: 30px;
-        }
-    }
-
-    &.active {
-        &::after {
-            content: '';
-            position: absolute;
-            display: block;
-            margin-top: 10px;
-            width: 100%;
-            height: 5px;
-            background-color: #fff;
-            border-radius: 30px;
-        }
-    }
-}
-
-#form-many {
-    .form-title {
-        text-align: center;
-        color: #333;
-        margin-bottom: 20px;
-    }
-
-    .form-instructions {
-        font-weight: bold;
-        color: #444;
-        margin-top: 10px;
-
-        &-main {
-            display: block;
-            font-size: 18px;
-        }
-    }
-
-    .multiple-products-form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .products-textarea {
-            width: 100%;
-            height: 150px;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-bottom: 20px;
-        }
-    }
+	&__value {
+		@apply text-xl border-2 border-blue-600 px-4 py-2 rounded-md bg-white hover:bg-blue-600 hover:text-white cursor-pointer transition duration-300;
+	}
 }

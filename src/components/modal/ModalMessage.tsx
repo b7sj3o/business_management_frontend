@@ -1,12 +1,8 @@
 import '@/styles/components/modal/ModalMessage.scss'
+import { ModalMessageProps } from '@/types/modal'
 import React, { useEffect, useState } from 'react'
 
-interface ModalProps {
-	message: string
-	onClose: () => void
-}
-
-const ModalMessage: React.FC<ModalProps> = ({ message, onClose }) => {
+const ModalMessage: React.FC<ModalMessageProps> = ({ message, onClose }) => {
 	const [isExiting, setIsExiting] = useState(false)
 
 	useEffect(() => {
@@ -22,13 +18,10 @@ const ModalMessage: React.FC<ModalProps> = ({ message, onClose }) => {
 
 	return (
 		<div
-			className={`modal ${isExiting ? 'exit' : ''}`}
+			className={`message-modal ${isExiting ? 'exit' : ''}`}
 			onAnimationEnd={handleAnimationEnd}
 		>
-			<div className='modal-content'>
-				<button className='modal-close' onClick={() => setIsExiting(true)}>
-					×
-				</button>
+			<div className='message-modal__content'>
 				<p>{message}</p>
 			</div>
 		</div>

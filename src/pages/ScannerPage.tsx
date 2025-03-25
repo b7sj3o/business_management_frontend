@@ -1,11 +1,8 @@
-import ModalFound from '@/components/modal/ModalFound'
-import ModalNotFound from '@/components/modal/ModalNotFound'
 import { useModalMessage } from '@/context/ModalMessageContext'
 import { findProductByBarcode } from '@/services/api'
 import '@/styles/pages/scanner/ScannerPage.scss'
-import { Product } from '@/types/product'
+import { Product } from '@/types/product/product.model'
 import React, { useState } from 'react'
-import BarcodeScannerComponent from 'react-qr-barcode-scanner'
 import { useNavigate } from 'react-router-dom'
 
 const ScannerPage: React.FC = () => {
@@ -68,7 +65,7 @@ const ScannerPage: React.FC = () => {
 		<>
 			{/* <button onClick={handleSimulateFound}>Simulate Product Found</button> */}
 			{/* <button onClick={handleSimulateNotFound}>Simulate Product Not Found</button> */}
-			<BarcodeScannerComponent
+			{/* <BarcodeScannerComponent
 				width={'100%'}
 				height={'100%'}
 				onUpdate={handleUpdate}
@@ -84,7 +81,7 @@ const ScannerPage: React.FC = () => {
 				isOpen={isModalNotFoundOpen}
 				onClose={handleCloseModalNotFound}
 				navigate={navigate}
-			/>
+			/> */}
 		</>
 	)
 }

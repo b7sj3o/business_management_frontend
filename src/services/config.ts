@@ -1,7 +1,6 @@
-import React, { useState } from "react"
-import { Product } from "../types/product"
-
+import { Product } from '@/types/product/product.model'
+import { useState } from 'react'
 
 export const Config = () => {
-    const [lastProduct, setLastProduct] = useState<Product>(Object);
+	const [lastProduct, setLastProduct] = useState<Product>(Object)
 }

@@ -1,8 +1,8 @@
 export interface LayoutProps {
-    children: React.ReactNode;
+	children: React.ReactNode
 }
 
 export interface MessageResponse {
-    message: string;
-    success?: boolean;
+	message: string
+	success?: boolean
 }
